@@ -1,3 +1,7 @@
+## 4.4.6 - 2018-06-27
+
+- Export JS object via typings -CF
+
 ## 4.4.5 - 2018-06-27
 
 - Export main interface declaration, try adding `main` entry to help module resolution -CF

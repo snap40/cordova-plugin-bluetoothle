@@ -1,3 +1,7 @@
+import { bluetoothle } from "../www/bluetoothle";
+
+export { bluetoothle };
+
 export declare namespace BluetoothlePlugin {
     interface Bluetoothle {
         /**

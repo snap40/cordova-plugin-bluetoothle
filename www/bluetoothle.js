@@ -1,5 +1,5 @@
 var bluetoothleName = "BluetoothLePlugin";
-var bluetoothle = {
+export const bluetoothle {
   initialize: function(successCallback, params) {
     cordova.exec(successCallback, successCallback, bluetoothleName, "initialize", [params]);
   },
@@ -11,7 +11,7 @@ var bluetoothle = {
   },
   getAdapterInfo: function(successCallback) {
     cordova.exec(successCallback, successCallback, bluetoothleName, "getAdapterInfo", []);
-  },  
+  },
   startScan: function(successCallback, errorCallback, params) {
     cordova.exec(successCallback, errorCallback, bluetoothleName, "startScan", [params]);
   },
@@ -184,4 +184,3 @@ var bluetoothle = {
   CALLBACK_TYPE_FIRST_MATCH: 2,
   CALLBACK_TYPE_MATCH_LOST: 4,
 }
-module.exports = bluetoothle;
