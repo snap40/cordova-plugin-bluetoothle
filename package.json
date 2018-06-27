@@ -1,8 +1,9 @@
 {
   "name": "@snap40/cordova-plugin-bluetoothle",
-  "version": "4.4.4",
+  "version": "4.4.5",
   "description": "Use the Bluetooth Low Energy plugin to connect your Cordova app to new Bluetooth devices like heart rate monitors, thermometers, etc...",
   "types": "./types/index.d.ts",
+  "main": "./www/bluetoothle.js",
   "publishConfig": {
     "registry": "https://nexus.snap40.com/repository/npm-private/"
   },

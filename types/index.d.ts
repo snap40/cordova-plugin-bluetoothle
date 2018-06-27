@@ -1,4 +1,4 @@
-declare namespace BluetoothlePlugin {
+export declare namespace BluetoothlePlugin {
     interface Bluetoothle {
         /**
          * Initialize Bluetooth on the device
@@ -7,8 +7,11 @@ declare namespace BluetoothlePlugin {
          *
          */
         initialize(
-            initializeResult:(result: { status: 'enabled' | 'disabled' }) => void,
-            params?: InitParams): void;
+            initializeResult: (
+                result: { status: "enabled" | "disabled" }
+            ) => void,
+            params?: InitParams
+        ): void;
 
         /**
          * Enable Bluetooth on the device. Android support only
@@ -18,8 +21,9 @@ declare namespace BluetoothlePlugin {
          *
          */
         enable(
-            enableSuccess:(result: { status: boolean }) => void,
-            enableError:(error: Error) => void): void;
+            enableSuccess: (result: { status: boolean }) => void,
+            enableError: (error: Error) => void
+        ): void;
 
         /**
          * Disable Bluetooth on the device. Android support only
@@ -30,7 +34,8 @@ declare namespace BluetoothlePlugin {
          */
         disable(
             disableSuccess: (result: Error) => void,
-            disableError: (error: Error) => void): void;
+            disableError: (error: Error) => void
+        ): void;
 
         /**
          * Scan for Bluetooth LE devices. Since scanning is expensive, stop as soon as possible. The Cordova app should use a timer to limit the scan interval.
@@ -44,9 +49,10 @@ declare namespace BluetoothlePlugin {
          *
          */
         startScan(
-            startScanSuccess:(status: ScanStatus) => void,
+            startScanSuccess: (status: ScanStatus) => void,
             startScanError: (error: Error) => void,
-            params?: ScanParams): void;
+            params?: ScanParams
+        ): void;
 
         /**
          * Stop scan for Bluetooth LE devices. Since scanning is expensive, stop as soon as possible
@@ -57,7 +63,8 @@ declare namespace BluetoothlePlugin {
          */
         stopScan(
             stopScanSuccess: (result: { status: string }) => void,
-            stopScanError: (error: Error) => void): void;
+            stopScanError: (error: Error) => void
+        ): void;
 
         /**
          * Retrieved paired Bluetooth LE devices. In iOS, devices that are "paired" to will not return during a normal scan.
@@ -70,7 +77,8 @@ declare namespace BluetoothlePlugin {
         retrieveConnected(
             retrieveConnectedSuccess: (devices: DeviceInfo[]) => void,
             retrieveConnectedError: (error: Error) => void,
-            params?: { services?: string[] }): void;
+            params?: { services?: string[] }
+        ): void;
 
         /**
          * Bond with a device.
@@ -85,7 +93,8 @@ declare namespace BluetoothlePlugin {
         bond(
             bondSuccess: (status: DeviceInfo) => void,
             bondError: (error: Error) => void,
-            params: { address: string }): void;
+            params: { address: string }
+        ): void;
 
         /**
          * Unbond with a device. The device doesn't need to be connected to initiate bonding. Android support only.
@@ -97,7 +106,8 @@ declare namespace BluetoothlePlugin {
         unbond(
             unbondSuccess: (status: DeviceInfo) => void,
             unbondError: (error: Error) => void,
-            params: { address: string }): void;
+            params: { address: string }
+        ): void;
 
         /**
          * Connect to a Bluetooth LE device
@@ -109,7 +119,8 @@ declare namespace BluetoothlePlugin {
         connect(
             connectSuccess: (status: DeviceInfo) => void,
             connectError: (error: Error) => void,
-            params: { address: string, autoConnect?: boolean }): void;
+            params: { address: string; autoConnect?: boolean }
+        ): void;
 
         /**
          * Reconnect to a previously connected Bluetooth device
@@ -121,7 +132,8 @@ declare namespace BluetoothlePlugin {
         reconnect(
             reconnectSuccess: (status: DeviceInfo) => void,
             reconnectError: (error: Error) => void,
-            params: { address: string }): void;
+            params: { address: string }
+        ): void;
 
         /**
          * Disconnect from a Bluetooth LE device.
@@ -134,7 +146,8 @@ declare namespace BluetoothlePlugin {
         disconnect(
             disconnectSuccess: (status: DeviceInfo) => void,
             disonnectError: (error: Error) => void,
-            params: { address: string }): void;
+            params: { address: string }
+        ): void;
 
         /**
          * Close/dispose a Bluetooth LE device.
@@ -148,7 +161,8 @@ declare namespace BluetoothlePlugin {
         close(
             closeSuccess: (status: DeviceInfo) => void,
             closeError: (error: Error) => void,
-            params: { address: string }): void;
+            params: { address: string }
+        ): void;
 
         /**
          * Discover all the devices services, characteristics and descriptors.
@@ -166,7 +180,8 @@ declare namespace BluetoothlePlugin {
         discover(
             discoverSuccess: (device: Device) => void,
             discoverError: (error: Error) => void,
-            params: { address: string, clearCache?: boolean }): void;
+            params: { address: string; clearCache?: boolean }
+        ): void;
 
         /**
          * Discover the device's services.
@@ -179,7 +194,8 @@ declare namespace BluetoothlePlugin {
         services(
             servicesSuccess: (services: Services) => void,
             servicesError: (error: Error) => void,
-            params: { address: string, services?: string[] }): void;
+            params: { address: string; services?: string[] }
+        ): void;
 
         /**
          * Discover the service's characteristics.
@@ -192,7 +208,8 @@ declare namespace BluetoothlePlugin {
         characteristics(
             characteristicsSuccess: (characteristics: Characteristics) => void,
             characteristicsError: (error: Error) => void,
-            params: CharacteristicParams): void;
+            params: CharacteristicParams
+        ): void;
 
         /**
          * Discover the characteristic's descriptors. iOS support only.
@@ -202,9 +219,10 @@ declare namespace BluetoothlePlugin {
          *
          */
         descriptors(
-            descriptorsSuccess: (descriptors: Descriptors) =>void,
+            descriptorsSuccess: (descriptors: Descriptors) => void,
             descriptorsError: (error: Error) => void,
-            params: DescriptorParams): void;
+            params: DescriptorParams
+        ): void;
 
         /**
          * Read a particular service's characteristic once
@@ -216,7 +234,8 @@ declare namespace BluetoothlePlugin {
         read(
             readSuccess: (result: OperationResult) => void,
             readError: (error: Error) => void,
-            params: DescriptorParams): void;
+            params: DescriptorParams
+        ): void;
 
         /**
          * Subscribe to a particular service's characteristic.
@@ -230,7 +249,8 @@ declare namespace BluetoothlePlugin {
         subscribe(
             subscribeSuccess: (result: OperationResult) => void,
             subscribeError: (error: Error) => void,
-            params: DescriptorParams): void;
+            params: DescriptorParams
+        ): void;
 
         /**
          * Unsubscribe to a particular service's characteristic.
@@ -241,7 +261,8 @@ declare namespace BluetoothlePlugin {
         unsubscribe(
             unsubscribeSuccess: (result: UnsubscribeResult) => void,
             unsubscribeError: (error: Error) => void,
-            params: DescriptorParams): void;
+            params: DescriptorParams
+        ): void;
 
         /**
          * Write a particular service's characteristic
@@ -253,7 +274,8 @@ declare namespace BluetoothlePlugin {
         write(
             writeSuccess: (result: OperationResult) => void,
             writeError: (error: Error) => void,
-            params: WriteCharacteristicParams): void;
+            params: WriteCharacteristicParams
+        ): void;
 
         /**
          * Write Quick / Queue, use this method to quickly execute write without response commands when writing more than 20 bytes at a time.
@@ -265,7 +287,8 @@ declare namespace BluetoothlePlugin {
         writeQ(
             writeSuccess: (result: OperationResult) => void,
             writeError: (error: Error) => void,
-            params: WriteCharacteristicParams): void;
+            params: WriteCharacteristicParams
+        ): void;
 
         /**
          * Read a particular characterist's descriptor
@@ -277,7 +300,8 @@ declare namespace BluetoothlePlugin {
         readDescriptor(
             readDescriptorSuccess: (descriptor: DescriptorResult) => void,
             readDescriptorError: (error: Error) => void,
-            params: OperationDescriptorParams): void;
+            params: OperationDescriptorParams
+        ): void;
 
         /**
          * Write a particular characteristic's descriptor. Unable to write characteristic configuration directly to keep in line with iOS implementation.
@@ -290,7 +314,8 @@ declare namespace BluetoothlePlugin {
         writeDescriptor(
             writeDescriptorSuccess: (descriptor: DescriptorResult) => void,
             writeDescriptorError: (error: Error) => void,
-            params: WriteDescriptorParams): void;
+            params: WriteDescriptorParams
+        ): void;
 
         /**
          * Read RSSI of a connected device. RSSI is also returned with scanning.
@@ -302,7 +327,8 @@ declare namespace BluetoothlePlugin {
         rssi(
             rssiSuccess: (rssi: RSSI) => void,
             rssiError: (error: Error) => void,
-            params: { address: string }): void;
+            params: { address: string }
+        ): void;
 
         /**
          * Set MTU of a connected device. Android only.
@@ -314,7 +340,8 @@ declare namespace BluetoothlePlugin {
         mtu(
             mtuSuccess: (mtu: MTU) => void,
             mtuError: (error: Error) => void,
-            params: { address: string, mtu?: number }): void;
+            params: { address: string; mtu?: number }
+        ): void;
 
         /**
          * Request a change in the connection priority to improve throughput when transfer large amounts of data via BLE.
@@ -327,28 +354,28 @@ declare namespace BluetoothlePlugin {
         requestConnectionPriority(
             success: (result: DeviceInfo) => void,
             error: (error: Error) => void,
-            params: { address: string, connectionPriority: ConnectionPriority}): void;
+            params: { address: string; connectionPriority: ConnectionPriority }
+        ): void;
 
         /**
          * Determine whether the adapter is initialized. No error callback. Returns true or false
          * @param success  The success callback that is passed with initizialization status
          */
         isInitialized(
-            success: (result: { isInitialized: boolean }) => void): void;
+            success: (result: { isInitialized: boolean }) => void
+        ): void;
 
         /**
          * Determine whether the adapter is enabled. No error callback
          * @param success The success callback that is passed with enabled status
          */
-        isEnabled(
-            success: (result: { isEnabled: boolean }) => void): void;
+        isEnabled(success: (result: { isEnabled: boolean }) => void): void;
 
         /**
          * Determine whether the adapter is initialized. No error callback. Returns true or false
          * @param success The success callback that is passed with scan status
          */
-        isScanning(
-            success: (result: { isScanning: boolean }) => void): void;
+        isScanning(success: (result: { isScanning: boolean }) => void): void;
 
         /**
          * Determine whether the device is bonded or not, or error if not initialized. Android support only.
@@ -360,7 +387,8 @@ declare namespace BluetoothlePlugin {
         isBonded(
             isBondedSuccess: (result: BondedStatus) => void,
             isBondedError: (error: Error) => void,
-            params: { address: string }): void;
+            params: { address: string }
+        ): void;
 
         /**
          * Determine whether the device was connected, or error if not initialized.
@@ -372,7 +400,8 @@ declare namespace BluetoothlePlugin {
         wasConnected(
             wasConnectedSuccess: (result: PrevConnectionStatus) => void,
             wasConnectedError: (error: Error) => void,
-            params: { address: string }): void;
+            params: { address: string }
+        ): void;
 
         /**
          * Determine whether the device is connected, or error if not initialized or never connected to device
@@ -382,9 +411,10 @@ declare namespace BluetoothlePlugin {
          *
          */
         isConnected(
-            isConnectedSuccess:(result: CurrConnectionStatus) => void,
+            isConnectedSuccess: (result: CurrConnectionStatus) => void,
             isConnectedError: (error: Error) => void,
-            params: { address: string }): void;
+            params: { address: string }
+        ): void;
 
         /**
          * Determine whether the device's characteristics and descriptors have been discovered, or error if not initialized or not connected to device.
@@ -394,16 +424,18 @@ declare namespace BluetoothlePlugin {
          *
          */
         isDiscovered(
-            isDiscoveredSuccess:(result: DiscoverStatus) => void,
+            isDiscoveredSuccess: (result: DiscoverStatus) => void,
             isDiscoveredError: (error: Error) => void,
-            params: { address: string }): void;
+            params: { address: string }
+        ): void;
 
         /**
          * Determine whether coarse location privileges are granted since scanning for unpaired devices requies it in Android API 23
          * @param success The success callback that is passed with has permission value
          */
         hasPermission(
-            success: (result: { hasPermission: boolean }) => void): void;
+            success: (result: { hasPermission: boolean }) => void
+        ): void;
 
         /**
          * Request coarse location privileges since scanning for unpaired devices requires it in Android API 23.
@@ -411,7 +443,8 @@ declare namespace BluetoothlePlugin {
          * @param success The success callback that is passed with request permission value
          */
         requestPermission(
-            success: (result: { requestPermission: boolean }) => void): void;
+            success: (result: { requestPermission: boolean }) => void
+        ): void;
 
         /**
          * Determine if location services are enabled or not. Location Services are required to find devices in Android API 23
@@ -420,8 +453,11 @@ declare namespace BluetoothlePlugin {
          *
          */
         isLocationEnabled(
-            isLocationEnabledSuccess: (result: { isLocationEnabled: boolean }) => void,
-            isLocationEnabledError: (error: Error) => void): void;
+            isLocationEnabledSuccess: (
+                result: { isLocationEnabled: boolean }
+            ) => void,
+            isLocationEnabledError: (error: Error) => void
+        ): void;
 
         /**
          * Prompt location services settings pages. requestLocation property returns whether location services are enabled or disabled.
@@ -431,8 +467,11 @@ declare namespace BluetoothlePlugin {
          *
          */
         requestLocation(
-            requestLocationSuccess: (result: { requestLocation: boolean }) => void,
-            requestLocationError: (error: Error) => void): void;
+            requestLocationSuccess: (
+                result: { requestLocation: boolean }
+            ) => void,
+            requestLocationError: (error: Error) => void
+        ): void;
 
         /**
          * Initialize Bluetooth on the device. Must be called before anything else.
@@ -445,7 +484,8 @@ declare namespace BluetoothlePlugin {
         initializePeripheral(
             success: (result: InitializeResult) => void,
             error: (error: Error) => void,
-            params?: InitPeripheralParams): void;
+            params?: InitPeripheralParams
+        ): void;
 
         /**
          * Add a service with characteristics and descriptors. If more than one service is added, add them sequentially
@@ -455,9 +495,10 @@ declare namespace BluetoothlePlugin {
          *
          */
         addService(
-            success: (result: { service: string, status: Status }) => void,
+            success: (result: { service: string; status: Status }) => void,
             error: (error: Error) => void,
-            params: { service: string, characteristics: Characteristic[] }): void;
+            params: { service: string; characteristics: Characteristic[] }
+        ): void;
 
         /**
          * Remove a service
@@ -467,9 +508,10 @@ declare namespace BluetoothlePlugin {
          *
          */
         removeService(
-            success: (result: { service: string, status: Status }) => void,
+            success: (result: { service: string; status: Status }) => void,
             error: (error: Error) => void,
-            params: { service: string }): void;
+            params: { service: string }
+        ): void;
 
         /**
          * Remove all services
@@ -479,7 +521,8 @@ declare namespace BluetoothlePlugin {
          */
         removeAllServices(
             success: (result: { status: Status }) => void,
-            error: (error: Error) => void): void;
+            error: (error: Error) => void
+        ): void;
 
         /**
          * Start advertising as a BLE device. Note: This needs to be improved so services can be used for both Android and iOS.
@@ -490,9 +533,10 @@ declare namespace BluetoothlePlugin {
          *
          */
         startAdvertising(
-            success: (result: { status: Status}) => void,
+            success: (result: { status: Status }) => void,
             error: (error: Error) => void,
-            params: AdvertisingParams): void;
+            params: AdvertisingParams
+        ): void;
 
         /**
          * Stop advertising
@@ -502,7 +546,8 @@ declare namespace BluetoothlePlugin {
          */
         stopAdvertising(
             success: (status: Status) => void,
-            error: (error: Error) => void): void;
+            error: (error: Error) => void
+        ): void;
 
         /**
          * Determine if app is advertising or not.
@@ -512,7 +557,8 @@ declare namespace BluetoothlePlugin {
          */
         isAdvertising(
             success: (result: { status: boolean }) => void,
-            error: (error: Error) => void): void;
+            error: (error: Error) => void
+        ): void;
 
         /**
          * Respond to a read or write request
@@ -524,7 +570,8 @@ declare namespace BluetoothlePlugin {
         respond(
             success: (result: { status: Status }) => void,
             error: (error: Error) => void,
-            params: RespondParams): void;
+            params: RespondParams
+        ): void;
 
         /**
          * Update a value for a subscription. Currently all subscribed devices will receive update.
@@ -536,9 +583,10 @@ declare namespace BluetoothlePlugin {
          *
          */
         notify(
-            success: (result: { status: Status, sent: boolean }) => void,
+            success: (result: { status: Status; sent: boolean }) => void,
             error: (error: Error) => void,
-            params: NotifyParams): void;
+            params: NotifyParams
+        ): void;
 
         /**
          * Helper function to convert a base64 encoded string from a characteristic or descriptor value into a uint8Array object
@@ -570,98 +618,127 @@ declare namespace BluetoothlePlugin {
     }
 
     /* Available status of device */
-    type Status = "scanStarted" | "scanStopped" | "scanResult" | "connected" | "disconnected"
-        | "bonding" | "bonded" | "unbonded" | "closed" | "services" | "discovered"
-        | "characteristics" | "descriptors" | "read" | "subscribed" | "unsubscribed"
-        | "subscribedResult" | "written" | "readDescriptor" | "writeDescriptor"
-        | "rssi" | "mtu" | "connectionPriorityRequested" |"enabled" | "disabled"
-        | "readRequested" | "writeRequested" | "mtuChanged" | "notifyReady" | "notifySent"
-        | "serviceAdded" | "serviceRemoved" | "allServicesRemoved" | "advertisingStarted"
-        | "advertisingStopped" | "responded" | "notified";
+    type Status =
+        | "scanStarted"
+        | "scanStopped"
+        | "scanResult"
+        | "connected"
+        | "disconnected"
+        | "bonding"
+        | "bonded"
+        | "unbonded"
+        | "closed"
+        | "services"
+        | "discovered"
+        | "characteristics"
+        | "descriptors"
+        | "read"
+        | "subscribed"
+        | "unsubscribed"
+        | "subscribedResult"
+        | "written"
+        | "readDescriptor"
+        | "writeDescriptor"
+        | "rssi"
+        | "mtu"
+        | "connectionPriorityRequested"
+        | "enabled"
+        | "disabled"
+        | "readRequested"
+        | "writeRequested"
+        | "mtuChanged"
+        | "notifyReady"
+        | "notifySent"
+        | "serviceAdded"
+        | "serviceRemoved"
+        | "allServicesRemoved"
+        | "advertisingStarted"
+        | "advertisingStopped"
+        | "responded"
+        | "notified";
 
     /** Avaialable connection priorities */
     type ConnectionPriority = "low" | "balanced" | "high";
 
     interface Params {
         /** The address/identifier provided by the scan's return object */
-        address: string,
+        address: string;
         /** The service's ID */
-        service: string
+        service: string;
     }
 
     interface InitPeripheralParams {
         /** Should user be prompted to enable Bluetooth */
-        request?: boolean,
+        request?: boolean;
         /* A unique string to identify your app. Bluetooth Central background mode is required to use this, but background mode doesn't seem to require specifying the restoreKey */
-        restoreKey?: string
-
+        restoreKey?: string;
     }
 
     interface InitParams extends InitPeripheralParams {
         /** Should change in Bluetooth status notifications be sent */
-        statusReceiver?: boolean,
+        statusReceiver?: boolean;
     }
 
     interface ScanParams {
         /* An array of service IDs to filter the scan or empty array / null. This parameter is not supported on Windows platform yet */
-        services?: string[],
+        services?: string[];
         /** True/false to allow duplicate advertisement packets, defaults to false (iOS)*/
-        allowDuplicates?: boolean,
+        allowDuplicates?: boolean;
         /** Defaults to Low Power. Available from API21 / API 23 (Android) */
-        scanMode?: BluetoothScanMode,
+        scanMode?: BluetoothScanMode;
         /** Defaults to Aggressive. Available from API23 (Android) */
-        matchMode?: BluetoothMatchMode,
+        matchMode?: BluetoothMatchMode;
         /** Defaults to One Advertisement. Available from API23 (Android) */
-        matchNum?: BluetoothMatchNum,
+        matchNum?: BluetoothMatchNum;
         /** Defaults to All Matches. Available from API21 / API 23. (Android) */
-        callbackType?: BluetoothCallbackType
+        callbackType?: BluetoothCallbackType;
     }
 
     interface NotifyParams {
         /** Service's UUID */
-        service: string,
+        service: string;
         /** Characteristic's UUID */
-        characteristic: string,
+        characteristic: string;
         /** Base64 encoded string, number or string */
-        value: string
+        value: string;
     }
 
     interface RespondParams {
         /** This integer value will be incremented every read/writeRequested */
-        requestId: number,
+        requestId: number;
         /** base64 string */
-        value: string,
+        value: string;
         /** not documented */
-        offset?: number
+        offset?: number;
     }
 
     interface CharacteristicParams extends Params {
         /** An array of characteristic IDs to discover or empty array / null */
-        characteristics?: string[]
+        characteristics?: string[];
     }
 
     interface DescriptorParams extends Params {
         /** The characteristic's ID */
-        characteristic: string
+        characteristic: string;
     }
 
-    interface OperationDescriptorParams  extends DescriptorParams {
+    interface OperationDescriptorParams extends DescriptorParams {
         /** The descriptor's ID */
-        descriptor: string
+        descriptor: string;
     }
 
     interface WriteCharacteristicParams extends DescriptorParams {
         /* Base64 encoded string */
-        value: string,
+        value: string;
         /* Set to "noResponse" to enable write without response, all other values will write normally. */
-        type?: string
+        type?: string;
     }
 
     interface WriteDescriptorParams extends DescriptorParams {
         /** The descriptor's ID */
-        descriptor: string,
+        descriptor: string;
         /** Base64 encoded string, number or string */
-        value: string
+        value: string;
     }
 
     type AdvertisingParams = AdvertisingParamsAndroid | AdvertisingParamsIOS;
@@ -670,216 +747,217 @@ declare namespace BluetoothlePlugin {
 
     interface AdvertisingParamsAndroid {
         /** Service UUID on Android */
-        service: string,
+        service: string;
         /** not documented */
-        mode?: AdvertiseMode,
+        mode?: AdvertiseMode;
         /** not documented */
-        connectable?: boolean,
+        connectable?: boolean;
         /** not documented */
-        timeout?: number,
+        timeout?: number;
         /** not documented */
-        txPowerLevel?: TxPowerLevel,
+        txPowerLevel?: TxPowerLevel;
         /** not documented */
-        manufacturerId?: number,
+        manufacturerId?: number;
         /** not documented */
-        manufacturerSpecificData?: any,
+        manufacturerSpecificData?: any;
         /** not documented */
-        includeDeviceName: boolean,
+        includeDeviceName: boolean;
         /** not documented */
-        includeTxPowerLevel: boolean
+        includeTxPowerLevel: boolean;
     }
 
     interface AdvertisingParamsIOS {
         /** Array of service UUIDs on iOS */
-        services: string[],
+        services: string[];
         /** device's name */
-        name?: string
+        name?: string;
     }
 
     interface CommonInfo {
         /** The device's display name */
-        name: string,
+        name: string;
         /** The device's address / identifier for connecting to the object */
-        address: string,
+        address: string;
     }
 
-    interface DeviceInfo extends CommonInfo{
+    interface DeviceInfo extends CommonInfo {
         /** Device's status */
         status: Status;
     }
 
     interface RSSI extends DeviceInfo {
         /** signal strength */
-        rssi: number
+        rssi: number;
     }
 
     interface MTU extends DeviceInfo {
         /* mtu value */
-        mtu: number
+        mtu: number;
     }
 
     interface BondedStatus extends CommonInfo {
         /** Bonded status*/
-        isBonded: boolean
+        isBonded: boolean;
     }
 
     interface PrevConnectionStatus extends CommonInfo {
         /** Determine whether the device was connected */
-        wasConnected: boolean
+        wasConnected: boolean;
     }
 
     interface CurrConnectionStatus extends CommonInfo {
         /** Determine whether the device is connected */
-        isConnected: boolean
+        isConnected: boolean;
     }
 
     interface DiscoverStatus extends CommonInfo {
         /** Determine whether the device's characteristics and descriptors have been discovered */
-        isDiscovered: boolean
+        isDiscovered: boolean;
     }
 
     interface ScanStatus extends DeviceInfo {
         /** signal strength */
-        rssi: number,
+        rssi: number;
         /**
          * advertisement data in encoded string of bytes, use bluetoothle.encodedStringToBytes() (Android)
          * advertisement hash with the keys (iOS)
          * empty (Windows)
          */
-        advertisement: {
-            /** An array of service UUIDs */
-            serviceUuids: string[],
-            /** A string representing the name of the manufacturer of the device */
-            manufacturerData: string,
-            /** A number containing the transmit power of a peripheral */
-            txPowerLevel: number,
-            /** An array of one or more CBUUID objects, representing CBService UUIDs that were found in the “overflow” area of the advertisement data */
-            overflowServiceUuids: string[],
-            /** A boolean value that indicates whether the advertising event type is connectable */
-            isConnectable: boolean,
-            /** An array of one or more CBUUID objects, representing CBService UUIDs */
-            solicitedServiceUuids: string[],
-            /* A dictionary containing service-specific advertisement data */
-            serviceData: any,
-            /* A string containing the local name of a peripheral */
-            localName: string
-        } | string;
+        advertisement:
+            | {
+                  /** An array of service UUIDs */
+                  serviceUuids: string[];
+                  /** A string representing the name of the manufacturer of the device */
+                  manufacturerData: string;
+                  /** A number containing the transmit power of a peripheral */
+                  txPowerLevel: number;
+                  /** An array of one or more CBUUID objects, representing CBService UUIDs that were found in the “overflow” area of the advertisement data */
+                  overflowServiceUuids: string[];
+                  /** A boolean value that indicates whether the advertising event type is connectable */
+                  isConnectable: boolean;
+                  /** An array of one or more CBUUID objects, representing CBService UUIDs */
+                  solicitedServiceUuids: string[];
+                  /* A dictionary containing service-specific advertisement data */
+                  serviceData: any;
+                  /* A string containing the local name of a peripheral */
+                  localName: string;
+              }
+            | string;
     }
-
 
     interface Service {
         /** Service's uuid */
-        uuid: string,
+        uuid: string;
         /** Array of characteristics */
-        characteristics : Characteristic[]
+        characteristics: Characteristic[];
     }
 
     interface Characteristic {
         /* Array of descriptors */
-        descriptors?: Descriptor[],
+        descriptors?: Descriptor[];
         /**  Characteristic's uuid */
-        uuid: string,
+        uuid: string;
         /**
          *  Characteristi's properties
          *  If the property is defined as a key, the characteristic has that property
          */
         properties?: {
-            write?: boolean,
-            broadcast?: boolean,
-            extendedProps?: boolean,
-            writeWithoutResponse?: boolean,
-            writeNoResponse?: boolean,
-            signedWrite?: boolean,
-            read?: boolean,
-            notify?: boolean,
-            indicate?: boolean,
-            authenticatedSignedWrites?: boolean,
-            notifyEncryptionRequired?: boolean,
-            indicateEncryptionRequired?: boolean
-        },
+            write?: boolean;
+            broadcast?: boolean;
+            extendedProps?: boolean;
+            writeWithoutResponse?: boolean;
+            writeNoResponse?: boolean;
+            signedWrite?: boolean;
+            read?: boolean;
+            notify?: boolean;
+            indicate?: boolean;
+            authenticatedSignedWrites?: boolean;
+            notifyEncryptionRequired?: boolean;
+            indicateEncryptionRequired?: boolean;
+        };
         /**
          *  If the permission is defined as a key, the character has that permission
          */
         permissions?: {
-            read?: boolean,
-            readEncrypted?: boolean,
-            readEncryptedMITM?: boolean
-            write?: boolean,
-            writeSigned?: boolean,
-            writeSignedMITM?: boolean,
-            writeEncryptedMITM?: boolean,
-            readEncryptionRequired?: boolean,
-            writeEncryptionRequired?: boolean
-        }
+            read?: boolean;
+            readEncrypted?: boolean;
+            readEncryptedMITM?: boolean;
+            write?: boolean;
+            writeSigned?: boolean;
+            writeSignedMITM?: boolean;
+            writeEncryptedMITM?: boolean;
+            readEncryptionRequired?: boolean;
+            writeEncryptionRequired?: boolean;
+        };
     }
-    
+
     interface Descriptor {
         uuid: string;
     }
 
     interface Device extends DeviceInfo {
         /** Device's services */
-        services: Service[]
+        services: Service[];
     }
 
     interface Services extends DeviceInfo {
         /** Array of service UUIDS */
-        services: string[],
+        services: string[];
     }
 
     interface Descriptors extends DeviceInfo {
         /** Characteristic's UUID */
-        characteristic: string,
+        characteristic: string;
         /** Service's UUID */
-        service: string,
+        service: string;
         /* Array of descriptor UUIDs */
-        descriptors: string[],
+        descriptors: string[];
     }
 
     interface OperationResult extends DeviceInfo {
         /** Characteristic UUID */
-        characteristic: string,
+        characteristic: string;
         /** Service's UUID */
-        service: string,
+        service: string;
         /** Base64 encoded string of bytes */
-        value: string
+        value: string;
     }
 
     interface UnsubscribeResult extends DeviceInfo {
         /** Characteristic UUID */
-        characteristic: string,
+        characteristic: string;
         /** Service's UUID */
-        service: string,
+        service: string;
     }
 
     interface DescriptorResult extends OperationResult {
-        descriptor: string
+        descriptor: string;
     }
 
     interface Characteristics extends DeviceInfo {
         /** Service's id */
-        service: string,
+        service: string;
         /** Array of characteristic objects*/
-        characteristics: Characteristic[],
+        characteristics: Characteristic[];
     }
 
-    interface  InitializeResult {
+    interface InitializeResult {
         /** Device's status */
-        status: Status,
+        status: Status;
         /** The address/identifier provided by the scan's return object */
-        address: string,
+        address: string;
         /** Service's UUID */
-        service: string,
+        service: string;
         /** Characteristic UUID */
-        characterisitc: string,
+        characterisitc: string;
         /** This integer value will be incremented every read/writeRequested */
-        requestId: number,
+        requestId: number;
         /** Offset value */
-        offset: number,
+        offset: number;
         /** mtu value */
-        mtu: number,
+        mtu: number;
         /** Base64 encoded string of bytes */
-        value: string
+        value: string;
     }
 
     enum BluetoothScanMode {
@@ -907,13 +985,13 @@ declare namespace BluetoothlePlugin {
     }
 
     interface Error {
-        code: number,
-        message: string
+        code: number;
+        message: string;
     }
 }
 
 interface Window {
-    bluetoothle: BluetoothlePlugin.Bluetoothle
+    bluetoothle: BluetoothlePlugin.Bluetoothle;
 }
 
 declare var bluetoothle: BluetoothlePlugin.Bluetoothle;

@@ -1,3 +1,7 @@
+## 4.4.5 - 2018-06-27
+
+- Export main interface declaration, try adding `main` entry to help module resolution -CF
+
 ## 4.4.4 - 2018-06-27
 
 - Forked in order to publish latest fixes which the original author neglected to do -CF
